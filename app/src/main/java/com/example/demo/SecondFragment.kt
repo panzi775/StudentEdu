@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.demo.databinding.FragmentSecondBinding
 
 /**
@@ -35,6 +36,26 @@ class SecondFragment : Fragment() {
         binding.buttonSecond.setOnClickListener {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
+
+
+        binding.buttonSecond.width
+        binding.buttonSecond.width = 200
+
+        // 使用View的内置动画方法
+        binding.buttonSecond.animate()
+            .alpha(0f)
+            .setDuration(1000L)
+            .withEndAction {
+
+            }
+            .start()
+
+
+        // 在 onViewCreated 里
+        Glide.with(this)
+            .load("https://example.com/image.jpg")
+            .preload()
+
     }
 
     override fun onDestroyView() {
